@@ -6,8 +6,6 @@ alias ls='ls -FG'
 # Slightly altered versions of our old friends
 alias grep='grep --color=auto'
 
-# Program shortcuts
-alias subl='/Applications/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl'
 
 ## Convenience
 # Fixes the ".../recode_data.xml not found" error with bibtex + latex
