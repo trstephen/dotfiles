@@ -1,0 +1,51 @@
+# colors!
+fg_green="\[\033[0;32m\]"
+fg_yellow="\[\033[0;33m\]"
+fg_blue="\[\033[0;34m\]"
+fg_purple="\[\033[0;35m\]"
+fg_cyan="\[\033[0;36m\]"
+fg_iblack="\[\033[0;90m\]"
+format_reset="\[\033[0m\]"
+
+# Add some easy shortcuts for formatted directory listings and add a touch of color.
+alias ll='ls -lFG'
+alias la='ls -alFG'
+alias ls='ls -FG'
+
+# Slightly altered versions of our old friends
+alias grep='grep --color=auto'
+alias cd='cd -P' # follow symlinks
+alias colordiff='colordiff -u'
+
+# Current time in ISO8601-ish format
+alias now='date "+%Y-%m-%dT%H:%M:%S"'
+
+# Git things~
+function git_current_branch() {
+  local ref
+  ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return  # no git repo.
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
+
+alias gloga='git log --oneline --all --graph --decorate'
+alias glogav='git log --graph --decorate --name-status --all'
+alias gaa='git add --all'
+alias gcam='git commit --all --message'
+alias gca='git commit --all'
+alias 'gca!'='git commit --all --amend'
+alias gco='git checkout'
+alias gcm='git checkout master'
+alias gb='git branch'
+alias gst='git status -sb'
+alias grbi='git rebase --interactive'
+alias grpo='git remote prune origin'
+alias grpo-all='for d in ./*/ ; do (cd "$d" && grpo); done' # do `grpo` to all folders in dir
+alias gstat='git shortlog -sn --no-merges'
+alias ggsup=`git branch --set-upstream-to=origin/$(git_current_branch)`
+alias ggpush='git push origin $(git_current_branch)'
+alias ggpull='git pull origin $(git_current_branch)'

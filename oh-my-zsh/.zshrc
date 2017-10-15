@@ -50,18 +50,31 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+# removed: virtualenvwrapper
+plugins=(git docker)
 
 # User configuration
 
-# export PATH="/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/Current/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Library/TeX/texbin:~/scripts:/Users/tyler/Library/Python/2.7/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
+# load nvm
+export NVM_DIR="/Users/tyler/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-# For python virtual environments
-# export WORKON_HOME="$HOME/code/.envs"
-# source /Users/tyler/Library/Python/2.7/bin/virtualenvwrapper.sh
+# automatically load node from .nvmrc files
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  # elif [[ $(nvm version) != $(nvm version default) ]]; then
+  #   echo "Reverting to nvm default version"
+  #   nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
 
-# boilerplate?
+
+# activate files
+source ~/.bash_profile
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
