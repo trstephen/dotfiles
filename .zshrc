@@ -13,9 +13,9 @@ if [ -f $GIT_PROMPT_FILE ]; then
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
     GIT_PS1_SHOWUPSTREAM="verbose"
-    GIT_PS1_SHOWCOLORHINTS=""
+    GIT_PS1_SHOWCOLORHINTS=1
     precmd () { __git_ps1 "
-%{$FG[241]%}(%D %*) <$?>%{$fg[green]%}" " %{$fg[cyan]%}%~ $program %{$fg[default]%}
+%{$FG[241]%}(%D %*) <$?>%{$fg[default]%}" " %{$fg[cyan]%}%~ $program %{$fg[default]%}
 %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)%{$reset_color%} " " %s"}
     # ^^^ three args:
     #   1: preceeding git status
@@ -24,7 +24,7 @@ if [ -f $GIT_PROMPT_FILE ]; then
     export RPROMPT=""
 else
     export PROMPT="
-%{$fg[white]%}(%D %*) <$?> [%~] $program %{$fg[default]%}
+%{$FG[241]%}(%D %*) <$?> %{$fg[cyan]%}%~ $program %{$fg[default]%}
 %(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)%{$reset_color%} "
     export RPROMPT=""
 fi
