@@ -46,6 +46,6 @@ alias grbi='git rebase --interactive'
 alias grpo='git remote prune origin'
 alias grpo-all='for d in ./*/ ; do (cd "$d" && grpo); done' # do `grpo` to all folders in dir
 alias gstat='git shortlog -sn --no-merges'
-alias ggsup=`git branch --set-upstream-to=origin/$(git_current_branch)`
+alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
 alias ggpush='git push origin $(git_current_branch)'
 alias ggpull='git pull origin $(git_current_branch)'
