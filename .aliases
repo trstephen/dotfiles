@@ -1,12 +1,3 @@
-# colors!
-fg_green="\[\033[0;32m\]"
-fg_yellow="\[\033[0;33m\]"
-fg_blue="\[\033[0;34m\]"
-fg_purple="\[\033[0;35m\]"
-fg_cyan="\[\033[0;36m\]"
-fg_iblack="\[\033[0;90m\]"
-format_reset="\[\033[0m\]"
-
 # Add some easy shortcuts for formatted directory listings and add a touch of color.
 alias ll='ls -lFG'
 alias la='ls -alFG'
